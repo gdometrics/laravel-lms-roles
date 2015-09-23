@@ -5,8 +5,8 @@
     	<h4>All Students</h4>
 
 		<ul class="list-group">
-  			@foreach($students as $student)
-  				<li class="list-group-item"><a href="student/{{ $student->id }}">{{ $student->name }}</a></li>
+  			@foreach($users as $user)
+  				<li class="list-group-item"><a href="user/{{ $user->id }}">{{ $user->name }}</a></li>
   			@endforeach
 		</ul>
 @endsection

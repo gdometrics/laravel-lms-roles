@@ -11,6 +11,9 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::resource('/', 'PagesController');
 
-Route::get('/students', 'PagesController@students');
-Route::get('/student/{id}', 'PagesController@student');
+Route::get('/users', 'PagesController@users');
+Route::get('/user/{id}', 'PagesController@user');
+
+Route::get('/edit_role/{id}', 'PagesController@edit_role');
+Route::post('/edit_role/{id}', 'PagesController@update_role');
 

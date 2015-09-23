@@ -15,8 +15,8 @@
                   @can('add_student')
                     <li role="presentation"><a href="#">Add Student</a></li>
                   @endcan
-                  @can('view_students')
-                    <li role="presentation"><a href="/students">View Students</a></li>
+                  @can('view_users')
+                    <li role="presentation"><a href="/users">View Users</a></li>
                   @endcan
                   @can('edit_students_permissions')
                     <li role="presentation"><a href="#">Edit Students Permissions</a></li>

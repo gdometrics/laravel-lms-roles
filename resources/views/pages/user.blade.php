@@ -3,13 +3,13 @@
 
 @section('content')
     	
-    	<h4>{{ $student->name }}</h4>
-    	<p>{{ $student->email }}</p>
-		@foreach($student->roles as $role)
+    	<h4>{{ $user->name }}</h4>
+    	<p>{{ $user->email }}</p>
+		@foreach($user->roles as $role)
 			<p>
 				{{ $role->label }} 
 				@can('edit_students_permissions') - 
-					<a href="#">Edit Role</button>
+					<a href="/edit_role/{{$user->id}}">Edit Role</button>
 				@endcan
 			</p>
 		@endforeach

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Role;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -91,19 +92,38 @@ class PagesController extends Controller
         //
     }
 
-    public function students()
+    public function users()
     {
-        $students = User::whereHas('roles', function($query)
-        {
-            $query->whereName('student');
-        })->get();
-        // return $students;
-        return view('pages.students', compact('students'));
+        // $users = User::whereHas('roles', function($query)
+        // {
+        //     $query->whereName('student');
+        // })->get();
+        // 
+        $users = User::all();
+
+        return view('pages.users', compact('users'));
     }
 
-    public function student($id)
+    public function user($id)
     {
-        $student = User::find($id);
-        return view('pages.student', compact('student'));
+        $user = User::find($id);
+        return view('pages.user', compact('user'));
+    }
+
+    public function edit_role($id)
+    {
+        $user = User::find($id);
+        return view('pages.edit_role', compact('user'));
+    }
+    public function update_role($id, Request $request)
+    {   
+        $user = User::find($id);
+        $role = Role::where('label', $request->role)->first();
+        
+        $user->roles()->detach();
+
+        $user->actAs($role->name);
+
+        return redirect('/users');
     }
 }

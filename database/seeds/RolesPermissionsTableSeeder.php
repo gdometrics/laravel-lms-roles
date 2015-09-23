@@ -14,14 +14,14 @@ class RolesPermissionsTableSeeder extends Seeder
      */
     public function run()
     {
+        $student = Role::create([
+            'name'  => 'student',
+            'label' => 'Student'
+        ]);
+
         $teacher = Role::create([
             'name' 	=> 'teacher',
             'label' => 'Teacher'
-        ]);
-
-        $student = Role::create([
-            'name' 	=> 'student',
-            'label' => 'Student'
         ]);
 
         $add_student = Permission::create
@@ -36,9 +36,9 @@ class RolesPermissionsTableSeeder extends Seeder
             'label' => 'Remove Student'
         ]);
 
-        $view_students = Permission::create
+        $view_users = Permission::create
         ([
-            'name' => 'view_students',
+            'name' => 'view_users',
             'label' => 'View Student'
         ]);
 
@@ -50,9 +50,9 @@ class RolesPermissionsTableSeeder extends Seeder
 
         $teacher->givePermission($add_student);
         $teacher->givePermission($remove_student);
-        $teacher->givePermission($view_students);
+        $teacher->givePermission($view_users);
         $teacher->givePermission($edit_students_permissions);
 
-        $student->givePermission($view_students);
+        $student->givePermission($view_users);
     }
 }
