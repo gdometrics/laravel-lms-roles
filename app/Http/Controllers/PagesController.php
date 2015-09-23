@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -87,5 +89,21 @@ class PagesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function students()
+    {
+        $students = User::whereHas('roles', function($query)
+        {
+            $query->whereName('student');
+        })->get();
+        // return $students;
+        return view('pages.students', compact('students'));
+    }
+
+    public function student($id)
+    {
+        $student = User::find($id);
+        return view('pages.student', compact('student'));
     }
 }

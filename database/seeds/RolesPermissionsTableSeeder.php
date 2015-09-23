@@ -36,7 +36,23 @@ class RolesPermissionsTableSeeder extends Seeder
             'label' => 'Remove Student'
         ]);
 
+        $view_students = Permission::create
+        ([
+            'name' => 'view_students',
+            'label' => 'View Student'
+        ]);
+
+        $edit_students_permissions = Permission::create
+        ([
+            'name' => 'edit_students_permissions',
+            'label' => 'Edit Student Permissions'
+        ]);
+
         $teacher->givePermission($add_student);
         $teacher->givePermission($remove_student);
+        $teacher->givePermission($view_students);
+        $teacher->givePermission($edit_students_permissions);
+
+        $student->givePermission($view_students);
     }
 }

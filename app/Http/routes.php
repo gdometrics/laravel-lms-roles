@@ -11,3 +11,6 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::resource('/', 'PagesController');
 
+Route::get('/students', 'PagesController@students');
+Route::get('/student/{id}', 'PagesController@student');
+

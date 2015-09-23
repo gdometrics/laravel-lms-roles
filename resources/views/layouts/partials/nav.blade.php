@@ -7,14 +7,28 @@
               <li role="presentation"><a href="/auth/register">Register</a></li>
               <li role="presentation"><a href="/auth/login">Login</a></li>
             @else  
-              @can('add_student')
-                <li role="presentation"><a href="#">Add Student</a></li>
-              @endcan
               
-              @can('remove_student')
-                <li role="presentation"><a href="#">Remove Student</a></li>
-              @endcan
-              <li role="presentation"><a href="/auth/logout">Logout</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li role="presentation"><a href="/">Dashboard</a></li>
+                  @can('add_student')
+                    <li role="presentation"><a href="#">Add Student</a></li>
+                  @endcan
+                  @can('view_students')
+                    <li role="presentation"><a href="/students">View Students</a></li>
+                  @endcan
+                  @can('edit_students_permissions')
+                    <li role="presentation"><a href="#">Edit Students Permissions</a></li>
+                  @endcan
+                  @can('remove_student')
+                    <li role="presentation"><a href="#">Remove Student</a></li>
+                  @endcan
+                  <li role="separator" class="divider"></li>
+                  <li role="presentation"><a href="/auth/logout">Logout</a></li>
+                </ul>
+              </li>
+
             @endif
           </ul>
         </nav>
